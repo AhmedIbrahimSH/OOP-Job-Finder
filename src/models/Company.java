@@ -38,10 +38,10 @@ public class Company {
 		No_of_employees = no_of_employees;
 	}
 	public JobPoster[] getJobPoster() {
-		return JobPoster;
+		return JobPosters;
 	}
 	public void setJobPoster(JobPoster[] jobPoster) {
-		JobPoster = jobPoster;
+		JobPosters = jobPoster;
 	}
 	 
 	 
