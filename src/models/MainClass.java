@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.*;
 
 
-
 public class MainClass {
 
 	public static void main(String[] args) throws InterruptedException {
@@ -14,7 +13,16 @@ public class MainClass {
 		ArrayList <CompanyAdmin> CompanyAdmins = new ArrayList<CompanyAdmin>() ;
 		ArrayList <JobSeeker> JobSeekers = new ArrayList<JobSeeker>();
 		ArrayList <JobPoster> JobPosters = new ArrayList<JobPoster>() ;
-		boolean jobposter = false , companyadmin = false , jobseeker = false,urlValid = false; 
+
+		// pre defined job seekers already exists in the system
+		JobSeeker ahmed = new JobSeeker("Ahmed Ibrahim","ahmed@gmail.com","123456789","software developer ","cv1.pdf"); 
+		JobSeeker hazem = new JobSeeker("Hazem Zaki","hazem@gmail.com","0123456789","software developer","cv.pdf"); 
+
+		JobSeekers.add(ahmed);
+		JobSeekers.add(hazem);
+
+		
+		boolean isjobposter = false , iscompanyadmin = false , isjobseeker = false,isurlValid = false; 
 		System.out.println("HELLO !");
 		System.out.println();
 		Thread.sleep(2000);
@@ -49,15 +57,15 @@ public class MainClass {
 				}
 				
 				else if(Job.toLowerCase().equals("yes"))
-						companyadmin = true;
+						iscompanyadmin = true;
 				else
-						jobposter = true;
+						isjobposter = true;
 						
 				}
 				
 			
 			else if(answer.toLowerCase().equals("no")) {
-				jobseeker = true;
+				isjobseeker = true;
 			}
 		
 		
@@ -85,12 +93,44 @@ public class MainClass {
 			
 			// case 1.1 : if the user have an account , we ask him for the details like username and password 
 			else if(having_an_account.toLowerCase().equals("yes")) {
-				System.out.println("Please Enter your username :  ");
-				String username = input.nextLine();
+				System.out.println("Please Enter your email :  ");
+				String email = input.nextLine();
 				System.out.println();
 				System.out.println("Please Enter your Password :  ");
 				String password = input.nextLine();
-
+				if(isjobseeker == true) {
+				while(account_authinticator_JobSeeker(email,password, JobSeekers) == false) {
+					System.out.println("Please Enter your email :  ");
+					email = input.nextLine();
+					System.out.println();
+					System.out.println("Please Enter your Password :  ");
+					password = input.nextLine();
+				}
+				System.out.println();
+					
+				}
+				else if(isjobposter == true) {
+					while(account_authinticator_JobPoster(email,password,JobPosters ) == false) {
+						System.out.println("Please Enter your email :  ");
+						email = input.nextLine();
+						System.out.println();
+						System.out.println("Please Enter your Password :  ");
+						password = input.nextLine();
+					}
+					System.out.println();
+						
+					}
+				else if(iscompanyadmin == true) {
+					while(account_authinticator_Admin(email,password, CompanyAdmins) == false) {
+						System.out.println("Please Enter your email :  ");
+						email = input.nextLine();
+						System.out.println();
+						System.out.println("Please Enter your Password :  ");
+						password = input.nextLine();
+					}
+					System.out.println();
+						
+					}
 			// case 1.2 : if the user doesnot have an account , we ask him for the details like username and password to register 
 
 			}
@@ -132,15 +172,16 @@ public class MainClass {
 			
 			
 			// defining the functionalities that a user may do if he is a company admin
+			if(new_company_name != null) {
 			if(new_company_name.toLowerCase().equals("employee")) {
 					System.out.println("Please upload your cv " );
 					Thread.sleep(1000);
 					System.out.println("Please upload it as a google drive link so it can be easier for the employer to see it ");
 					cv_input = input.nextLine();
-					while(!urlValid) {
+					while(!isurlValid) {
 				        try {
 				            url = new URL(cv_input);
-				            urlValid = true;
+				            isurlValid = true;
 				            System.out.println("The url was valid");
 							Thread.sleep(1000);
 				            System.out.println("CV successfully uploaded");
@@ -165,14 +206,7 @@ public class MainClass {
 					System.out.println("Your CV link : " + cv_input.toString());
 					System.out.println();
 
-					
-					
-					
-			}
-		
-		
-		
-		
+			}}
 	}
 	
 	// to avoid printing  error twice
@@ -197,6 +231,8 @@ public class MainClass {
 			return true;
 	
 	}
+	
+	// to ensure that password is longer than 8
 	public static boolean lengthofpasswordchecker(String password) {
 		if(password.length() < 8) {
 			System.out.println("ERROR !");
@@ -207,5 +243,123 @@ public class MainClass {
 			return true;
 		
 	}
+	
+	public static boolean account_authinticator_JobSeeker(String email , String Password, ArrayList<JobSeeker> list) throws InterruptedException {
+		
+		int found = 0 , not_found = 0 , correct = 0, wrong = 0, index = 0;
+		for(int i = 0 ; i < list.size(); i++) {
+			if(list.get(i).getEmail().equals(email)) {
+				index = i;
+				found = 1;
+				if(list.get(i).getPassword().equals(Password)) {
+					correct = 1;
+				}
+				else {
+					wrong = 1;
+				}
+			}
+			else 
+				not_found = 1;
+		}
+		System.out.println();
+		if(found == 1 && correct == 1) {
+			System.out.println("Signed In Successfully");
+			System.out.println();
+			System.out.println("Welcome " + list.get(index).getName());
+			return true;
+		}
+		else if(found == 1 && wrong == 1) {
+			System.out.println();
+			System.out.println("Wrong Password");
+			Thread.sleep(1500);
+			System.out.println("Try Again");
+			return false;
+		}
+		else {
+			System.out.println("Account not found");
+			System.out.println();
+			return false;
+		}
+	}
+
+public static boolean account_authinticator_JobPoster(String email , String Password, ArrayList<JobPoster> list) throws InterruptedException {
+	
+	int found = 0 , not_found = 0 , correct = 0, wrong = 0, index = 0;
+	for(int i = 0 ; i < list.size(); i++) {
+		if(list.get(i).getEmail().equals(email)) {
+			index = i;
+			found = 1;
+			if(list.get(i).getPassword().equals(Password)) {
+				correct = 1;
+			}
+			else {
+				wrong = 1;
+			}
+		}
+		else 
+			not_found = 1;
+	}
+	System.out.println();
+	if(found == 1 && correct == 1) {
+		System.out.println("Signed In Successfully");
+		System.out.println();
+		System.out.println("Welcome Mr. " + list.get(index).getName());
+		System.out.println();
+		System.out.println("Job Title : " + list.get(index).getTitle());
+		return true;
+	}
+	else if(found == 1 && wrong == 1) {
+		System.out.println();
+		System.out.println("Wrong Password");
+		Thread.sleep(1500);
+		System.out.println("Try Again");
+		return false;
+	}
+	else {
+		System.out.println("Account not found");
+		System.out.println();
+		return false;
+	}
+}
+
+public static boolean account_authinticator_Admin(String email , String Password, ArrayList<CompanyAdmin> list) throws InterruptedException {
+	
+	int found = 0 , not_found = 0 , correct = 0, wrong = 0, index = 0;
+	for(int i = 0 ; i < list.size(); i++) {
+		if(list.get(i).getEmail().equals(email)) {
+			index = i;
+			found = 1;
+			if(list.get(i).getPassword().equals(Password)) {
+				correct = 1;
+			}
+			else {
+				wrong = 1;
+			}
+		}
+		else 
+			not_found = 1;
+	}
+	System.out.println();
+	if(found == 1 && correct == 1) {
+		System.out.println("Signed In Successfully");
+		System.out.println();
+		System.out.println("Welcome Mr. " + list.get(index).getName());
+		System.out.println();
+		System.out.println("Job Title : " + list.get(index).getTitle());
+		return true;
+	}
+	else if(found == 1 && wrong == 1) {
+		System.out.println();
+		System.out.println("Wrong Password");
+		Thread.sleep(1500);
+		System.out.println("Try Again");
+		return false;
+	}
+	else {
+		System.out.println("Account not found");
+		System.out.println();
+		return false;
+	}
+}
 	
 }
