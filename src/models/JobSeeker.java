@@ -2,12 +2,13 @@ package models;
 
 public class JobSeeker extends Personal_Info {
 	
-	String CV;
-	private JobSeeker(String name, String email, String password, String title, String CV) {
+	private String CV;
+	public JobSeeker(String name, String email, String password, String title, String CV) {
 		super(name, email, password, title);
 		this.CV = CV;
 	}
 	public void applyJob() {
+		
 		
 		
 	}
@@ -25,11 +26,11 @@ public class JobSeeker extends Personal_Info {
 	public void updateApp() {
 		
 	}
-	public void getCv() {
-		
+	public String getCv() {
+		return CV;
 	}
-	public void setCv() {
-		
+	public void setCv(String CV) {
+		this.CV = CV;
 	}
 	
 }

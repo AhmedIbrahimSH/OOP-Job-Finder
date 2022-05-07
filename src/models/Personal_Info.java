@@ -1,5 +1,10 @@
 package models;
-
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 public class Personal_Info {
 	
 	private String name;
@@ -46,7 +51,6 @@ public class Personal_Info {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
 	
 
 
