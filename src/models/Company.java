@@ -6,6 +6,7 @@ public class Company {
 	 private String name;
 	 private int No_Job_vacancies;
 	 private int No_of_employees ;
+	 private int publishDate;
 	 private ArrayList<String> reviews ;
 	 private ArrayList <Vacancies> Vacancies;
 	 private ArrayList<JobPoster> JobPosters ;
@@ -13,8 +14,9 @@ public class Company {
 	public Company(String name) {
 		this.name = name;
 	}
-	public Company(String name, int no_Job_vacancies, int No_of_employees, ArrayList<String> reviews_of_first_company,ArrayList<models.Vacancies> jobsAtFirstCompany, ArrayList<JobPoster> jobPosters) {
+	public Company(String name, int publishDate , int no_Job_vacancies, int No_of_employees, ArrayList<String> reviews_of_first_company,ArrayList<models.Vacancies> jobsAtFirstCompany, ArrayList<JobPoster> jobPosters) {
 		this.name = name;
+		this.publishDate = publishDate;
 		No_Job_vacancies = no_Job_vacancies;
 		this.No_of_employees = No_of_employees;
 		this.reviews =reviews_of_first_company;
@@ -28,6 +30,18 @@ public class Company {
 	public ArrayList<Vacancies> getVacancies() {
 			return Vacancies;
 		}
+	public int getPublishDate() {
+		return publishDate;
+	}
+	public void setPublishDate(int publishDate) {
+		this.publishDate = publishDate;
+	}
+	public ArrayList<JobPoster> getJobPosters() {
+		return JobPosters;
+	}
+	public void setJobPosters(ArrayList<JobPoster> jobPosters) {
+		JobPosters = jobPosters;
+	}
 	public void setVacancies(ArrayList<Vacancies> vacancies) {
 			Vacancies = vacancies;
 		}
@@ -40,12 +54,7 @@ public class Company {
 	public String getName() {
 		return name;
 	}
-	public ArrayList<JobPoster> getJobPoster() {
-		return JobPosters;
-	}
-	public void setJobPoster(ArrayList<JobPoster> jobPoster) {
-		JobPosters = jobPoster;
-	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}

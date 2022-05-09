@@ -7,14 +7,17 @@ public class Vacancies {
 	private String requirements;
 	private static int index = 0;
 	private JobPoster employer;
-	
-	public Vacancies(String jobName, double salary, String requirements, JobPoster employer ) {
+
+	public Vacancies(String jobName, double salary, String requirements, JobPoster employer  ) {
 		this.employer = employer;
 		JobName = jobName;
 		Salary = salary;
 		this.requirements = requirements;
 		
 	}
+
+	
+
 
 	public JobPoster getEmployer() {
 		return employer;

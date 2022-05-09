@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class UserApplications {
 	
-		private String state = "pending";
+		private static String state = "In review";
 		private ArrayList <String> AppliedForJobs = new ArrayList <String>();
 		private ArrayList <Company> appliedfor = new ArrayList <Company> ();
 		private JobPoster sentTo;
@@ -15,8 +15,11 @@ public class UserApplications {
 				AppliedForJobs.add(JobName);
 				appliedfor.add(CompanyName);		
 		}
-		
-		public String getState() {
+		public UserApplications() {
+
+		}
+
+		public static String getState() {
 			return state;
 		}
 		public void setState(String state) {

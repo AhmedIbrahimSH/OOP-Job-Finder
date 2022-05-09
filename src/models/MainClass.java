@@ -12,7 +12,7 @@ public class MainClass {
 	public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
 		String new_name = null ,new_company_name = null,new_user_title = null,new_email = null,new_password= null, cv_input = null;
 		URL url = null;
-		Company first_company = new Company("Max"), second_company = new Company("Adidas"); 
+		Company first_company = new Company("Max"), second_company = new Company("Adidas") , third_company = new Company("Siemens");
 		String email = new String();
 		
 		ArrayList <CompanyAdmin> CompanyAdmins = new ArrayList<CompanyAdmin>() ;
@@ -22,9 +22,10 @@ public class MainClass {
 		ArrayList <JobSeeker> New_Seekers2 = new ArrayList<JobSeeker>();
 		ArrayList <JobSeeker> New_Seekers3 = new ArrayList<JobSeeker>();
 
-		ArrayList <JobPoster> JobPosters_of_firstcompany = new ArrayList<JobPoster>() ;
-		ArrayList <JobPoster> JobPosters_of_secondcompany = new ArrayList<JobPoster>() ;
-		ArrayList <JobPoster> max_company_jobposters,Adidas_company_jobposters;
+//	ArrayList <JobPoster> JobPosters_of_firstcompany = new ArrayList<JobPoster>() ;
+	//	ArrayList <JobPoster> JobPosters_of_secondcompany = new ArrayList<JobPoster>() ;
+	//	ArrayList <JobPoster> JobPosters_of_third_company = new ArrayList<JobPoster>() ;
+		ArrayList <JobPoster> max_company_jobposters,Adidas_company_jobposters,Siemens_company_jobposters;
 		
 		ArrayList <UserApplications> userapplicationlist = new ArrayList<UserApplications>();
 		
@@ -43,7 +44,11 @@ public class MainClass {
 		JobPoster hazem = new JobPoster("hazem", "hazem@gmail.com", "12354881", "PR",second_company);
 		JobPoster mohamed = new JobPoster("mohamed","mohamed@gmail.com", "2548864551", "Manager", second_company);
 		JobPoster yusuf = new JobPoster("yusuf", "yusuf@gmail.com", "354864846", "HR", second_company);
-		
+		JobPoster hassan = new JobPoster("hassan", "hassan@gmail.com", "354864846", "HR", third_company);
+		JobPoster hamada= new JobPoster("hamada", "hamada@gmail.com", "354864846", "HR", third_company);
+		JobPoster mahmoud = new JobPoster("mahmoud", "mahmoud@gmail.com", "354864846", "HR", third_company);
+		JobPoster mark = new JobPoster("mark", "mark@gmail.com", "354864846", "HR", third_company);
+
 		String req1 = "Computer Science Graduate , min age : 20 , excellent english";
 		Vacancies JobAtFirstCompany = new Vacancies("Software Developer", 1500, req1 , maged);
 		String req2 = "Business Student , min age : 18 , good english";
@@ -54,13 +59,19 @@ public class MainClass {
 		Vacancies Job1AtSecondCompany = new Vacancies("Computer Science", 2000, req4, mohamed);
 		String req5 = "Journalist , min age : 30 , excellent english";
 		Vacancies Job2AtSecondCompany = new Vacancies("Journalist", 150, req5,yusuf);
-		String req6 = "Mechanical Engineer , min age : 20 , excellent english";
+		String req6 = "Mechanical Engineer , min age : 20 , good english";
 		Vacancies Job3AtSecondCompany = new Vacancies("Mechanical Engineer", 1500, req6,hazem);
+		String req7 = "Doctor Bachaleors , min age : 26 , advanced english";
+		Vacancies Job1AtThirdCompany = new Vacancies("Doctor Bachaleors", 800, req1 , hamada);
+		String req8 = "Electronics Engineer , min age : 19 , excellent english";
+		Vacancies Job2AtThirdCompany = new Vacancies("Electronics Engineer", 1500, req1 , mahmoud);
+		String req9 = "Teacher of French , min age : 28 , excellent english and good french";
+		Vacancies Job3AtThirdCompany = new Vacancies("Teacher of French", 2500 , req1 , mark);
 		
-		
-		ArrayList <Vacancies> AllJobs = new ArrayList <Vacancies>(Arrays.asList(JobAtFirstCompany, Job2AtFirstCompany, Job3AtFirstCompany,Job1AtSecondCompany, Job2AtSecondCompany, Job3AtSecondCompany));
+		ArrayList <Vacancies> AllJobs = new ArrayList <Vacancies>(Arrays.asList(JobAtFirstCompany, Job2AtFirstCompany, Job3AtFirstCompany,Job1AtSecondCompany, Job2AtSecondCompany, Job3AtSecondCompany,Job1AtThirdCompany,Job2AtThirdCompany,Job3AtThirdCompany));
 		ArrayList <Vacancies> JobsAtFirstCompany = new ArrayList <Vacancies>(Arrays.asList(JobAtFirstCompany, Job2AtFirstCompany, Job3AtFirstCompany));
 		ArrayList <Vacancies> JobsAtSecondCompany = new ArrayList <Vacancies>(Arrays.asList(Job1AtSecondCompany, Job2AtSecondCompany, Job3AtSecondCompany));
+		ArrayList <Vacancies> JobsAtThirdCompany = new ArrayList <Vacancies>(Arrays.asList(Job1AtThirdCompany, Job2AtThirdCompany, Job3AtThirdCompany));
 
 		
 		
@@ -68,43 +79,54 @@ public class MainClass {
 		
 		ArrayList <String> reviews_of_first_company = new ArrayList <String>(Arrays.asList("Given by Ahmed : Excellent", "Given by Ali : Very Good", "Given by Mohamed : Good", "Given by Salma : Good","Given by Ahmed : Very Good"));
 						
-		ArrayList <String> reviews_of_second_company = new ArrayList <String>(Arrays.asList("Given by Hassan : Good", "Given by Omar : Very Good", " Given by Ali : Good", "Given by Hazem : Good","Given by Mariam : Very Good", "Given by Abdelrahman : Bad"));
+		ArrayList <String> reviews_of_second_company = new ArrayList <String>(Arrays.asList("Given by Hassan : Good", "Given by Omar : Very Good", "Given by Ali : Good", "Given by Hazem : Good","Given by Mariam : Very Good", "Given by Abdelrahman : Bad"));
 		
-		
+		ArrayList <String> reviews_of_third_company = new ArrayList <String>(Arrays.asList("Given by Mark : Very Good", "Given by Hazem : Very Good", "Given by Ali : Good", "Given by Ahmed : Bad ","Given by Omar : Very Good", "Given by Abdelrahman : Excellent "));
+
 		
 		
 		
 		max_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(maged, mariam , ali, ahmed));
 		Adidas_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(wael, hazem , mohamed, yusuf));
+		Siemens_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(hassan , hamada , mark , mahmoud ));
 		
-		first_company = new Company("Max" , 10 ,100, reviews_of_first_company, JobsAtFirstCompany, max_company_jobposters);
-		second_company  = new Company("Adidas", 15,100, reviews_of_second_company, JobsAtSecondCompany, Adidas_company_jobposters);
+		first_company = new Company("Max" , 1910 ,10 ,100, reviews_of_first_company, JobsAtFirstCompany, max_company_jobposters);
+		second_company  = new Company("Adidas", 1925 ,15,100, reviews_of_second_company, JobsAtSecondCompany, Adidas_company_jobposters);
+		third_company  = new Company("Siemens", 1905 ,15,100, reviews_of_third_company, JobsAtThirdCompany, Siemens_company_jobposters);
 
-		ArrayList <Company> all_companies = new ArrayList <Company>(Arrays.asList(first_company,second_company ));
+		ArrayList <Company> all_companies = new ArrayList <Company>(Arrays.asList(first_company,second_company,third_company ));
 		
 		
 		// pre-defined company admins
 		
-		CompanyAdmin omar = new CompanyAdmin("ahmed", "ahmed@gmail.com", "01244846", "General Manager ", first_company);
-		CompanyAdmin sami = new CompanyAdmin("ali","ali@gmail.com", "123456789", "Head of HR", first_company);
-		CompanyAdmin hassan = new CompanyAdmin("hassan","hassan@gmail.com" , "015155561351", "Head of HR", second_company);
+		CompanyAdmin omar = new CompanyAdmin("omar", "omar@gmail.com", "01244846", "General Manager ", first_company);
+		CompanyAdmin sami = new CompanyAdmin("sami","sami@gmail.com", "123456789", "Head of HR", first_company);
+		CompanyAdmin Hakim = new CompanyAdmin("Hakim","Hakim@gmail.com" , "015155561351", "Head of HR", second_company);
 		CompanyAdmin malak = new CompanyAdmin("malak", "malak@gmail.com" ,"0123789456", "General Manager", second_company);
+		CompanyAdmin Karim = new CompanyAdmin("Karim", "Karim@gmail.com" ,"3546846161", "HR MANAGER", third_company);
+		CompanyAdmin Sayed = new CompanyAdmin("Sayed", "Sayed@gmail.com" ,"468468646", "CHIEF MANAGER", third_company);
+
 		CompanyAdmins.add(omar);
 		CompanyAdmins.add(sami);
-		CompanyAdmins.add(hassan);
+		CompanyAdmins.add(Hakim);
 		CompanyAdmins.add(malak);
+		CompanyAdmins.add(Karim);
+		CompanyAdmins.add(Sayed);
 
 		
 		// pre-defined job seekers already exists in the system
 		
 		JobSeeker tarek = new JobSeeker("tarek","tarek@gmail.com","123456789","software developer ","https://www.resumonk.com/resume-templates"); 
-		JobSeeker mahmoud = new JobSeeker("mahmoud","mahmoud@gmail.com","0123456789","software developer","https://resume-example.com/"); 
-		JobSeeker hossam = new JobSeeker("hossam","hossam@gmail.com","0123456789","software developer","https://resume-example.com/"); 
-		JobSeeker hassanin = new JobSeeker("hassanin","hassanin@gmail.com","0123456789","software developer","https://www.resumonk.com/resume-templates"); 
-		JobSeeker hamdy = new JobSeeker("hamdy","hamdy@gmail.com","0123456789","software developer","https://resume-example.com/"); 
+		JobSeeker anas = new JobSeeker("anas","anas@gmail.com","0123456789","Doctor","https://resume-example.com/"); 
+		JobSeeker hossam = new JobSeeker("hossam","hossam@gmail.com","0123456789","Mechanical Engineer","https://resume-example.com/"); 
+		JobSeeker hassanin = new JobSeeker("hassanin","hassanin@gmail.com","0123456789","Marketing analyst","https://www.resumonk.com/resume-templates"); 
+		JobSeeker hamdy = new JobSeeker("hamdy","hamdy@gmail.com","0123456789","Teacher","https://resume-example.com/"); 
 
 		JobSeekers.add(tarek);
-		JobSeekers.add(mahmoud);
+		JobSeekers.add(anas);
+		JobSeekers.add(hossam);
+		JobSeekers.add(hassanin);
+		JobSeekers.add(hamdy);
 
 		boolean isjobposter = false , iscompanyadmin = false , isjobseeker = false,isurlValid = false;  // boolean values which determine the job of the user
 		
@@ -323,12 +345,13 @@ public class MainClass {
 						System.out.println();
 						d = 0;
 						Thread.sleep(1500);
-						System.out.println( c + ") "+ "Offered by \"" + all_companies.get(i).getName() + "\" Company : ");
+			//			System.out.println( c + ") "+ "Offered by \"" + all_companies.get(i).getName() + "\" Company : ");
 						System.out.println();
-						Thread.sleep(1500);
+//						Thread.sleep(1500);
 						for(int j = 0 ; j < (all_companies.get(i).getVacancies().size()); j++) {
 //								System.out.println(a + " ) " + "Posted by : " + all_companies.get(i).getVacancies().get(d).getEmployer().getName());
-								System.out.println( a + " ) " + "Job Title : " + all_companies.get(i).getVacancies().get(j).getJobName());
+								System.out.println( a + " ) " + "Offered by \"" + all_companies.get(i).getName() + "\" Company : ");
+								System.out.println("    Job Title : " + all_companies.get(i).getVacancies().get(j).getJobName());
 								System.out.println("    Essential Requierments : " + all_companies.get(i).getVacancies().get(j).getRequirements());
 								System.out.println("    Salary : " + all_companies.get(i).getVacancies().get(j).getSalary() + " $");
 								a++;
@@ -366,12 +389,13 @@ public class MainClass {
 							}
 							numberofjobs[z] = memo;
 						}
+						
 						for(int i = 0 ; i < applyingfor; i++) {
 							x = numberofjobs[i]; // stores number of the choosen index in the for loop to make it easy
 							if(x == 0)
 								break ; 
 							System.out.println();
-							System.out.println( (i+1) + " ) "+ "Completing your application for the \"" + AllJobs.get(x-1).getJobName()+ "\" job" + " posted by \"" + AllJobs.get(x-1).getEmployer().GetCompanyName().getName() +"\" Company");
+							System.out.println( (i+1) + " ) "+ "Completing your application for the \"" + AllJobs.get(x-1).getJobName()+ "\" job" + " posted by \"" + AllJobs.get(x-1).getEmployer().GetCompanyName().getName()+"\" Company");
 							Thread.sleep(1500);
 							// newly added
 							UserApplications new_applicant = new UserApplications(AllJobs.get(x-1).getJobName(),AllJobs.get(x-1).getEmployer().GetCompanyName()) ;
@@ -405,20 +429,9 @@ public class MainClass {
 						
 						if(view.toLowerCase().equals("yes")) {
 							int counter = 1;
-							System.out.println("Your Job Application list is :");
 							JobSeeker.showList(AppliedFor);
 
-//							for(int j = 0 ; j < AppliedFor.size(); j++) {
-//								System.out.println();
-//								System.out.println();
-//								System.out.println("Application "+ counter + " ) ");
-//								System.out.println("     Company Name : " + AppliedFor.get(j).getEmployer().GetCompanyName().getName());
-//								System.out.println("     Job Title : " + AppliedFor.get(j).getJobName());
-//								System.out.println("     Job Reqs : " + AppliedFor.get(j).getRequirements());
-//								System.out.println("     Job Salary : " + AppliedFor.get(j).getSalary());
-//								counter++;
-//								System.out.println();
-//							}
+
 						}						
 						
 
@@ -443,18 +456,7 @@ public class MainClass {
 								System.out.println();
 						//		System.out.println("Your Job List is : ");
 								JobSeeker.showList(AppliedFor);
-	
-	//							int counter = 1;
-	//							for(int j = 0 ; j < AppliedFor.size(); j++) {
-	//								System.out.println();
-	//								System.out.println("Application "+ counter + " ) ");
-	//								System.out.println("     Company Name : " + AppliedFor.get(j).getEmployer().GetCompanyName().getName());
-	//								System.out.println("     Job Title : " + AppliedFor.get(j).getJobName());
-	//								System.out.println("     Job Reqs : " + AppliedFor.get(j).getRequirements());
-	//								System.out.println("     Job Salary : " + AppliedFor.get(j).getSalary());
-	//								counter++;
-	//								System.out.println();
-	//							}
+
 								System.out.println();
 								if(!JobSeeker.islistempty(AppliedFor)) {
 								System.out.println("How many applications do you want to delete (Enter 0 if you want none to be deleted) ");
@@ -467,6 +469,9 @@ public class MainClass {
 								for(int i = 0 ; i < number ; i++) {
 								System.out.println("Enter the index of the application you want to delete from the list shown above");
 								int deletedindex = input.nextInt();
+								
+					//			System.out.println("Note that the size is : " + AppliedFor.size());
+								
 								if(deletedindex != 0) {
 								while(deletedindex < 0 || deletedindex > AppliedFor.size()) {
 									System.out.println("Invalid Index");
@@ -476,7 +481,7 @@ public class MainClass {
 								
 								// look here
 								
-								JobSeeker.deleteApp(AppliedFor, deletedindex-1);
+								JobSeeker.deleteApp(AppliedFor, deletedindex);
 								
 								
 								
@@ -487,39 +492,45 @@ public class MainClass {
 								System.out.println();
 								System.out.println("Your new updated Application list is : ");
 								System.out.println();
-								System.out.println("Your Job Application list is :");
+//								System.out.println("Your Job Application list is :");
 								JobSeeker.showList(AppliedFor);
 								}}}
-								}
-	//							for(int j = 0 ; j < AppliedFor.size(); j++) {
-	//								System.out.println();
-	//								System.out.println();
-	//								System.out.println("Application "+ counter2 + " ) ");
-	//								System.out.println("     Company Name : " + AppliedFor.get(j).getEmployer().GetCompanyName().getName());
-	//								System.out.println("     Job Title : " + AppliedFor.get(j).getJobName());
-	//								System.out.println("     Job Reqs : " + AppliedFor.get(j).getRequirements());
-	//								System.out.println("     Job Salary : " + AppliedFor.get(j).getSalary());
-	//								counter2++;
-	//								System.out.println();
-	//						}}
-							
+								}						
 							if(change.toLowerCase().equals("u")) {
-								System.out.println();
-								System.out.println("Your Job List is : ");
-								JobSeeker.showList(AppliedFor);
-								System.out.println();
-								System.out.println("Enter the index of the application you want to delete from the list shown above");
-								int updatedindex = input.nextInt();
-								while(updatedindex <= 0 || updatedindex > AppliedFor.size()) {
-									System.out.println("Invalid Index");
-									System.out.println("Please enter a valid index");
-									updatedindex = input.nextInt();
-								}
+								if(!JobSeeker.islistempty(AppliedFor)) {
+									System.out.println("How many applications do you want to update (Enter 0 if you want none to be updated) ");
+									int number = input.nextInt();
+							
+									if(number > AppliedFor.size() || number < 0) {
+										System.out.println("Error!\nPlease enter valid number of Application between 0 and " + AppliedFor.size());
+										number = input.nextInt();
+									}
+									
+									for(int i = 0 ; i < number ; i++) {
+									System.out.println("Enter the index of the application you want to update from the list shown above   (If you don't want to proceed updating enter 0)");
+									int updatedindex = input.nextInt();
+									
+							//		System.out.println("Note that the size is : " + AppliedFor.size());
+									
+									if(updatedindex != 0) {
+										while(updatedindex < 0 || updatedindex > AppliedFor.size()) {
+											System.out.println("Invalid Index");
+											System.out.println("Please enter a valid index");
+											updatedindex = input.nextInt();
+										}
+										tarek.updateApp(AppliedFor, updatedindex);
+									}
+									else {
+										continue;
+									}
 								
-							}}
+								
+							}
+									
+								}
 
 							
-						}
+						}}}
 					
 						
 					
@@ -531,7 +542,7 @@ public class MainClass {
 					
 					// TO ADD OR SEE REVIEWS IF YOU ARE JOBSEEKER
 					
-					System.out.println("Do you want to see the review of the companies ? ");
+					System.out.println("Do you want to see the Companies info and the reviews of the companies ? ");
 					String result = input.nextLine();
 					while(errorcheck(result) == false) {
 						result = input.nextLine();
@@ -539,17 +550,27 @@ public class MainClass {
 					if(result.toLowerCase().equals("yes")) {
 						
 						Thread.sleep(2000);
-						System.out.println("Note That the best review is excellent while bad is the worst");
 						System.out.println();
 						Thread.sleep(1500);
+						int a = 1 ; 
 						for(int i = 0 ; i < all_companies.size(); i++) {
+							System.out.println(a + " ) " + "Company Name : " + all_companies.get(i).getName() );
+							System.out.println();
+							System.out.println("Company Published by : " + all_companies.get(i).getPublishDate());
+							System.out.println();
+							System.out.println("Number of Employees in the Company is : " + all_companies.get(i).getNo_of_employees());
+							System.out.println();
 							System.out.println("The reviews for the Company known as  \"" + all_companies.get(i).getName() + "\"  is : ");
+							System.out.println();
+							System.out.println("Note That the best review is excellent while bad is the worst");
+							System.out.println();
 							System.out.println();
 							for(int j = 0 ; j < all_companies.get(i).getReviews().size(); j++) {
 								System.out.println((j+1) + " ) " + all_companies.get(i).getReviews().get(j)+"  ");
 							}
 							System.out.println();
 							System.out.println();
+							a++;
 						}
 					}
 					
@@ -587,29 +608,24 @@ public class MainClass {
 									}
 							JobSeeker.review(nameofcompany, reviewing, all_companies);
 						}
-							//	all_companies.get(i).getReviews().add(reviewing);
-							//	System.out.println("Your review has been succefully added");
-							//	Thread.sleep(1000);
-							//	System.out.println("Thank you for your contribution ");
-								
-							//}
-							
-						//}
-						
-						
-						
-						
-					}
+			
+			
+					}}
+			System.out.println();
+			System.out.println("Thank you for using the application and hope to see you soon ");
+			
+	
+	}
 					
 			
 			
-			}
+			
 			
 			
 			// end of job seeker functions 
 	
 	
-	}
+	
 	
 	
 	
