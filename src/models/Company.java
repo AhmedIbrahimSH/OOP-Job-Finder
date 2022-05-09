@@ -10,7 +10,9 @@ public class Company {
 	 private ArrayList <Vacancies> Vacancies;
 	 private ArrayList<JobPoster> JobPosters ;
 	 
-
+	public Company(String name) {
+		this.name = name;
+	}
 	public Company(String name, int no_Job_vacancies, int No_of_employees, ArrayList<String> reviews_of_first_company,ArrayList<models.Vacancies> jobsAtFirstCompany, ArrayList<JobPoster> jobPosters) {
 		this.name = name;
 		No_Job_vacancies = no_Job_vacancies;

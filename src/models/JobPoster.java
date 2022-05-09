@@ -12,9 +12,17 @@ import java.util.ArrayList;
 public class JobPoster extends Personal_Info {
 	private  Company name;
 	
-	public JobPoster(String name, String email, String password, String title, Company company_name) {
-		super(name, email, password, title);
+	public JobPoster(String name2, String email, String password, String title, Company company_name) {
+		super(name2, email, password, title);
 		this.name = company_name;
+	}
+
+	public Company GetCompanyName() {
+		return name;
+	}
+
+	public void setCompanyName(Company name) {
+		this.name = name;
 	}
 
 	public void addJob() {
