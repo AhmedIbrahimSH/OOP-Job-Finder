@@ -36,18 +36,18 @@ public class MainClass {
 
 		// pre-defined jobposters
 
-		JobPoster maged = new JobPoster("maged", "maged@gmail.com", "012345678", "HR", first_company);
-		JobPoster mariam = new JobPoster("mariam", "mariam@gmail.com", "12345678", "PR", first_company);
-		JobPoster ali = new JobPoster("ali", "ali@gmail.com", "456789123", "Software manager",first_company);
-		JobPoster ahmed = new JobPoster("ahmed", "ahmed@gmail.com", "012378945", "HR",first_company);
-		JobPoster wael = new JobPoster("wael", "wael@gmail.com", "10234568", "Software Developer",second_company);
-		JobPoster hazem = new JobPoster("hazem", "hazem@gmail.com", "12354881", "PR",second_company);
-		JobPoster mohamed = new JobPoster("mohamed","mohamed@gmail.com", "2548864551", "Manager", second_company);
-		JobPoster yusuf = new JobPoster("yusuf", "yusuf@gmail.com", "354864846", "HR", second_company);
-		JobPoster hassan = new JobPoster("hassan", "hassan@gmail.com", "354864846", "HR", third_company);
-		JobPoster hamada= new JobPoster("hamada", "hamada@gmail.com", "354864846", "HR", third_company);
-		JobPoster mahmoud = new JobPoster("mahmoud", "mahmoud@gmail.com", "354864846", "HR", third_company);
-		JobPoster mark = new JobPoster("mark", "mark@gmail.com", "354864846", "HR", third_company);
+		JobPoster maged = new JobPoster("Maged", "maged@gmail.com", "012345678", "HR", first_company);
+		JobPoster mariam = new JobPoster("Mariam", "mariam@gmail.com", "12345678", "PR", first_company);
+		JobPoster ali = new JobPoster("Ali", "ali@gmail.com", "456789123", "Software manager",first_company);
+		JobPoster ahmed = new JobPoster("Ahmed", "ahmed@gmail.com", "012378945", "HR",first_company);
+		JobPoster wael = new JobPoster("Wael", "wael@gmail.com", "10234568", "Software Developer",second_company);
+		JobPoster hazem = new JobPoster("Hazem", "hazem@gmail.com", "12354881", "PR",second_company);
+		JobPoster mohamed = new JobPoster("Mohamed","mohamed@gmail.com", "2548864551", "Manager", second_company);
+		JobPoster yusuf = new JobPoster("Yusuf", "yusuf@gmail.com", "354864846", "HR", second_company);
+		JobPoster hassan = new JobPoster("Hassan", "hassan@gmail.com", "354864846", "HR", third_company);
+		JobPoster hamada= new JobPoster("Hamada", "hamada@gmail.com", "354864846", "HR", third_company);
+		JobPoster mahmoud = new JobPoster("Mahmoud", "mahmoud@gmail.com", "354864846", "HR", third_company);
+		JobPoster mark = new JobPoster("Mark", "mark@gmail.com", "354864846", "HR", third_company);
 
 		String req1 = "Computer Science Graduate , min age : 20 , excellent english";
 		Vacancies JobAtFirstCompany = new Vacancies("Software Developer", 1500, req1 , maged);
@@ -99,10 +99,10 @@ public class MainClass {
 		
 		// pre-defined company admins
 		
-		CompanyAdmin omar = new CompanyAdmin("omar", "omar@gmail.com", "01244846", "General Manager ", first_company);
-		CompanyAdmin sami = new CompanyAdmin("sami","sami@gmail.com", "123456789", "Head of HR", first_company);
+		CompanyAdmin omar = new CompanyAdmin("Omar", "omar@gmail.com", "01244846", "General Manager ", first_company);
+		CompanyAdmin sami = new CompanyAdmin("Sami","sami@gmail.com", "123456789", "Head of HR", first_company);
 		CompanyAdmin Hakim = new CompanyAdmin("Hakim","Hakim@gmail.com" , "015155561351", "Head of HR", second_company);
-		CompanyAdmin malak = new CompanyAdmin("malak", "malak@gmail.com" ,"0123789456", "General Manager", second_company);
+		CompanyAdmin malak = new CompanyAdmin("Malak", "malak@gmail.com" ,"0123789456", "General Manager", second_company);
 		CompanyAdmin Karim = new CompanyAdmin("Karim", "Karim@gmail.com" ,"3546846161", "HR MANAGER", third_company);
 		CompanyAdmin Sayed = new CompanyAdmin("Sayed", "Sayed@gmail.com" ,"468468646", "CHIEF MANAGER", third_company);
 
@@ -116,18 +116,22 @@ public class MainClass {
 		
 		// pre-defined job seekers already exists in the system
 		
-		JobSeeker tarek = new JobSeeker("tarek","tarek@gmail.com","123456789","software developer ","https://www.resumonk.com/resume-templates"); 
-		JobSeeker anas = new JobSeeker("anas","anas@gmail.com","0123456789","Doctor","https://resume-example.com/"); 
-		JobSeeker hossam = new JobSeeker("hossam","hossam@gmail.com","0123456789","Mechanical Engineer","https://resume-example.com/"); 
-		JobSeeker hassanin = new JobSeeker("hassanin","hassanin@gmail.com","0123456789","Marketing analyst","https://www.resumonk.com/resume-templates"); 
-		JobSeeker hamdy = new JobSeeker("hamdy","hamdy@gmail.com","0123456789","Teacher","https://resume-example.com/"); 
+		JobSeeker tarek = new JobSeeker("Tarek","tarek@gmail.com","123456789","software developer ","https://www.resumonk.com/resume-templates"); 
+		JobSeeker anas = new JobSeeker("Anas","anas@gmail.com","0123456789","Doctor","https://resume-example.com/"); 
+		JobSeeker hossam = new JobSeeker("Hossam","hossam@gmail.com","0123456789","Mechanical Engineer","https://resume-example.com/"); 
+		JobSeeker hassanin = new JobSeeker("Hassanin","hassanin@gmail.com","0123456789","Marketing analyst","https://www.resumonk.com/resume-templates"); 
+		JobSeeker hamdy = new JobSeeker("Hamdy","hamdy@gmail.com","0123456789","Teacher","https://resume-example.com/"); 
 
+		
 		JobSeekers.add(tarek);
 		JobSeekers.add(anas);
 		JobSeekers.add(hossam);
 		JobSeekers.add(hassanin);
 		JobSeekers.add(hamdy);
 
+		
+		
+		
 		boolean isjobposter = false , iscompanyadmin = false , isjobseeker = false,isurlValid = false;  // boolean values which determine the job of the user
 		
 		
@@ -366,6 +370,12 @@ public class MainClass {
 					System.out.println();
 					System.out.println("Note : Maximum number of jobs that you can apply for is 5 ");
 					int applyingfor = input.nextInt();
+					
+// exception handling if the user enters a letter for phase 2 implementation					
+//					while(!input.hasNextInt()) {
+//						System.out.println("Please Enter valid integar number ");
+//						applyingfor = input.nextInt();
+//					}
 					if(applyingfor != 0) {
 						while(applyingfor < 0 || applyingfor > 5) {
 							System.out.println("Invalid Number \nPlease enter number between 1 and 5");
@@ -421,9 +431,10 @@ public class MainClass {
 						String view;
 						System.out.println("Do you want to review your applications ?");
 						view = input.nextLine();
-						Thread.sleep(1000);
-						while((view.toLowerCase().equals("yes") == false) && (view.toLowerCase().equals("no") == false)) {
-							System.out.println("Invalid answer!  Enter \"Yes\" or \"No\"");
+						if(lookingforajob.toLowerCase().equals("yes")) {
+							view = input.nextLine();
+						}
+						while(!errorcheck(view)) {
 							view = input.nextLine();
 						}
 						
@@ -536,9 +547,6 @@ public class MainClass {
 					
 
 					System.out.println();
-					System.out.println();
-
-					
 					
 					// TO ADD OR SEE REVIEWS IF YOU ARE JOBSEEKER
 					
@@ -581,7 +589,6 @@ public class MainClass {
 						result2 = input.nextLine();
 					}
 					if(result2.toLowerCase().equals("yes")) {
-						System.out.println();
 						System.out.println("Please Enter the name of the company that you want to rate ");
 						Thread.sleep(1000);
 						System.out.println("We will show you the names of the companies ");

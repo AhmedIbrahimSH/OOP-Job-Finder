@@ -14,10 +14,18 @@ public class JobSeeker extends Personal_Info {
 		super(name, email, password, title);
 		this.CV = CV;
 	}
-	
-	
+
+	Scanner input = new Scanner(System.in);
 	UserApplications seekerlist = new UserApplications();
 	
+
+	
+	public ArrayList<Vacancies> getJobList() {
+		return JobList;
+	}
+	public void setJobList(ArrayList<Vacancies> jobList) {
+		JobList = jobList;
+	}
 	public static void showList(ArrayList<Vacancies> list) {
 		if(list.size() != 0) {
 		int counter2 = 1;
@@ -68,9 +76,8 @@ public class JobSeeker extends Personal_Info {
 				System.out.println("You cannot delete any application because you didnot apply yet !");
 			}
 			else {
-				x.remove(index);
 				System.out.println("Deleting your application for the " + x.get(index-1).getJobName() + " posted by " + x.get(index-1).getEmployer().GetCompanyName().getName());
-
+				x.remove(index-1);
 	}}
 	public void updateApp(ArrayList<Vacancies> x , int index) throws InterruptedException {
 		URL url = null;
@@ -117,7 +124,6 @@ public class JobSeeker extends Personal_Info {
 	public static void review(String nameofcompany , String review , ArrayList <Company> companies) {
 		for(int i = 0 ; i < companies.size(); i++) {
 			if(nameofcompany.equals(companies.get(i).getName())) {
-				System.out.println("Enter your review ");
 				companies.get(i).getReviews().add(review);
 				System.out.println("Your review has been succefully added");
 				System.out.println("Thank you for your contribution ");
@@ -130,7 +136,6 @@ public class JobSeeker extends Personal_Info {
 		return false;
 		}
 	
-	Scanner input = new Scanner(System.in);
 	
 	}
 	
