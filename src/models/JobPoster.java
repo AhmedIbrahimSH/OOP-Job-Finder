@@ -16,6 +16,7 @@ public class JobPoster extends Personal_Info {
 		super(name2, email, password, title);
 		this.name = company_name;
 	}
+	
 
 	public Company GetCompanyName() {
 		return name;

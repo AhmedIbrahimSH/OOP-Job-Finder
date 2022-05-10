@@ -8,13 +8,24 @@ public class Company {
 	 private int No_of_employees ;
 	 private int publishDate;
 	 private ArrayList<String> reviews ;
-	 private ArrayList <Vacancies> Vacancies;
-	 private ArrayList<JobPoster> JobPosters ;
+	 private ArrayList <Vacancies> Vacancies = new ArrayList <Vacancies>();
+	 private ArrayList<JobPoster> JobPosters = new ArrayList<JobPoster>();
 	 
 	public Company(String name) {
 		this.name = name;
 	}
-	public Company(String name, int publishDate , int no_Job_vacancies, int No_of_employees, ArrayList<String> reviews_of_first_company,ArrayList<models.Vacancies> jobsAtFirstCompany, ArrayList<JobPoster> jobPosters) {
+	
+//	public Company(String name, int no_Job_vacancies, int no_of_employees, int publishDate, ArrayList<Vacancies> vacancies, ArrayList<JobPoster> jobPosters) {
+//		super();
+//		this.name = name;
+//		No_Job_vacancies = no_Job_vacancies;
+//		No_of_employees = no_of_employees;
+//		this.publishDate = publishDate;
+//		Vacancies = vacancies;
+//		JobPosters = jobPosters;
+//	}
+
+	public Company(String name, int publishDate , int no_Job_vacancies, int No_of_employees, ArrayList<String> reviews_of_first_company,ArrayList<Vacancies> jobsAtFirstCompany, ArrayList<JobPoster> jobPosters) {
 		this.name = name;
 		this.publishDate = publishDate;
 		No_Job_vacancies = no_Job_vacancies;
@@ -23,8 +34,20 @@ public class Company {
 		Vacancies = jobsAtFirstCompany;
 		JobPosters = jobPosters;
 	}
-		// TODO Auto-generated constructor stub
 	
+	
+	
+		// TODO Auto-generated constructor stub
+	public void showdetails(Company x) {
+		System.out.println();
+		System.out.println("Name of company : " + x.getName());
+		System.out.println();
+		System.out.println("Published in : " + x.getPublishDate());
+		System.out.println();
+		System.out.println("Number of employees " + x.getNo_of_employees());
+		System.out.println();
+		System.out.println();
+	}
 
 	
 	public ArrayList<Vacancies> getVacancies() {

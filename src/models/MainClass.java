@@ -10,11 +10,11 @@ import java.util.*;
 public class MainClass {
 
 	public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
-		String new_name = null ,new_company_name = null,new_user_title = null,new_email = null,new_password= null, cv_input = null;
+		String new_name = new String() ,new_company_name = new String(),new_user_title =new String(),new_email = new String(),new_password= new String(), cv_input = new String();
 		URL url = null;
 		Company first_company = new Company("Max"), second_company = new Company("Adidas") , third_company = new Company("Siemens");
 		String email = new String();
-		
+		int newAge = 0;
 		ArrayList <CompanyAdmin> CompanyAdmins = new ArrayList<CompanyAdmin>() ;
 		
 		ArrayList <JobSeeker> JobSeekers = new ArrayList<JobSeeker>();
@@ -29,44 +29,42 @@ public class MainClass {
 		
 		ArrayList <UserApplications> userapplicationlist = new ArrayList<UserApplications>();
 		
-		
-//		ArrayList <Vacancies> Available_Jobs;
+		CompanyAdmin NewAdmin;
+		Company NewCompany;
+//		
+		//ArrayList <Vacancies> Available_Jobs;
 		ArrayList <Vacancies> AppliedFor = new ArrayList<Vacancies>();
-//		ArrayList <Vacancies> pendingJobs = new ArrayList<Vacancies>();
 
 		// pre-defined jobposters
 
 		JobPoster maged = new JobPoster("Maged", "maged@gmail.com", "012345678", "HR", first_company);
 		JobPoster mariam = new JobPoster("Mariam", "mariam@gmail.com", "12345678", "PR", first_company);
-		JobPoster ali = new JobPoster("Ali", "ali@gmail.com", "456789123", "Software manager",first_company);
-		JobPoster ahmed = new JobPoster("Ahmed", "ahmed@gmail.com", "012378945", "HR",first_company);
+		
 		JobPoster wael = new JobPoster("Wael", "wael@gmail.com", "10234568", "Software Developer",second_company);
-		JobPoster hazem = new JobPoster("Hazem", "hazem@gmail.com", "12354881", "PR",second_company);
-		JobPoster mohamed = new JobPoster("Mohamed","mohamed@gmail.com", "2548864551", "Manager", second_company);
-		JobPoster yusuf = new JobPoster("Yusuf", "yusuf@gmail.com", "354864846", "HR", second_company);
+		JobPoster hazem = new JobPoster("Hazem", "hazem@gmail.com", "012345678", "PR",second_company);
+		
 		JobPoster hassan = new JobPoster("Hassan", "hassan@gmail.com", "354864846", "HR", third_company);
 		JobPoster hamada= new JobPoster("Hamada", "hamada@gmail.com", "354864846", "HR", third_company);
-		JobPoster mahmoud = new JobPoster("Mahmoud", "mahmoud@gmail.com", "354864846", "HR", third_company);
-		JobPoster mark = new JobPoster("Mark", "mark@gmail.com", "354864846", "HR", third_company);
+	
 
 		String req1 = "Computer Science Graduate , min age : 20 , excellent english";
 		Vacancies JobAtFirstCompany = new Vacancies("Software Developer", 1500, req1 , maged);
 		String req2 = "Business Student , min age : 18 , good english";
 		Vacancies Job2AtFirstCompany = new Vacancies("Business Analyst", 1600, req2,mariam);
 		String req3 = "Doctor , min age : 25 , excellent english";
-		Vacancies Job3AtFirstCompany = new Vacancies("Doctor ", 1800, req3, ali);
+		Vacancies Job3AtFirstCompany = new Vacancies("Doctor ", 1800, req3, maged);
 		String req4 = "Computer Science Graduate , min age : 20 , excellent english";
-		Vacancies Job1AtSecondCompany = new Vacancies("Computer Science", 2000, req4, mohamed);
+		Vacancies Job1AtSecondCompany = new Vacancies("Computer Science", 2000, req4, hazem);
 		String req5 = "Journalist , min age : 30 , excellent english";
-		Vacancies Job2AtSecondCompany = new Vacancies("Journalist", 150, req5,yusuf);
+		Vacancies Job2AtSecondCompany = new Vacancies("Journalist", 150, req5,wael);
 		String req6 = "Mechanical Engineer , min age : 20 , good english";
 		Vacancies Job3AtSecondCompany = new Vacancies("Mechanical Engineer", 1500, req6,hazem);
 		String req7 = "Doctor Bachaleors , min age : 26 , advanced english";
 		Vacancies Job1AtThirdCompany = new Vacancies("Doctor Bachaleors", 800, req1 , hamada);
 		String req8 = "Electronics Engineer , min age : 19 , excellent english";
-		Vacancies Job2AtThirdCompany = new Vacancies("Electronics Engineer", 1500, req1 , mahmoud);
+		Vacancies Job2AtThirdCompany = new Vacancies("Electronics Engineer", 1500, req1 , hassan);
 		String req9 = "Teacher of French , min age : 28 , excellent english and good french";
-		Vacancies Job3AtThirdCompany = new Vacancies("Teacher of French", 2500 , req1 , mark);
+		Vacancies Job3AtThirdCompany = new Vacancies("Teacher of French", 2500 , req1 , hamada);
 		
 		ArrayList <Vacancies> AllJobs = new ArrayList <Vacancies>(Arrays.asList(JobAtFirstCompany, Job2AtFirstCompany, Job3AtFirstCompany,Job1AtSecondCompany, Job2AtSecondCompany, Job3AtSecondCompany,Job1AtThirdCompany,Job2AtThirdCompany,Job3AtThirdCompany));
 		ArrayList <Vacancies> JobsAtFirstCompany = new ArrayList <Vacancies>(Arrays.asList(JobAtFirstCompany, Job2AtFirstCompany, Job3AtFirstCompany));
@@ -86,9 +84,9 @@ public class MainClass {
 		
 		
 		
-		max_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(maged, mariam , ali, ahmed));
-		Adidas_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(wael, hazem , mohamed, yusuf));
-		Siemens_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(hassan , hamada , mark , mahmoud ));
+		max_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(maged, mariam));
+		Adidas_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(wael, hazem));
+		Siemens_company_jobposters = new ArrayList <JobPoster>(Arrays.asList(hassan , hamada));
 		
 		first_company = new Company("Max" , 1910 ,10 ,100, reviews_of_first_company, JobsAtFirstCompany, max_company_jobposters);
 		second_company  = new Company("Adidas", 1925 ,15,100, reviews_of_second_company, JobsAtSecondCompany, Adidas_company_jobposters);
@@ -99,35 +97,22 @@ public class MainClass {
 		
 		// pre-defined company admins
 		
-		CompanyAdmin omar = new CompanyAdmin("Omar", "omar@gmail.com", "01244846", "General Manager ", first_company);
+		CompanyAdmin omar = new CompanyAdmin("Omar", "omar@gmail.com", "112233445566", "General Manager ", first_company);
 		CompanyAdmin sami = new CompanyAdmin("Sami","sami@gmail.com", "123456789", "Head of HR", first_company);
-		CompanyAdmin Hakim = new CompanyAdmin("Hakim","Hakim@gmail.com" , "015155561351", "Head of HR", second_company);
-		CompanyAdmin malak = new CompanyAdmin("Malak", "malak@gmail.com" ,"0123789456", "General Manager", second_company);
-		CompanyAdmin Karim = new CompanyAdmin("Karim", "Karim@gmail.com" ,"3546846161", "HR MANAGER", third_company);
-		CompanyAdmin Sayed = new CompanyAdmin("Sayed", "Sayed@gmail.com" ,"468468646", "CHIEF MANAGER", third_company);
-
+		
 		CompanyAdmins.add(omar);
 		CompanyAdmins.add(sami);
-		CompanyAdmins.add(Hakim);
-		CompanyAdmins.add(malak);
-		CompanyAdmins.add(Karim);
-		CompanyAdmins.add(Sayed);
+		
 
 		
 		// pre-defined job seekers already exists in the system
 		
 		JobSeeker tarek = new JobSeeker("Tarek","tarek@gmail.com","123456789","software developer ","https://www.resumonk.com/resume-templates"); 
 		JobSeeker anas = new JobSeeker("Anas","anas@gmail.com","0123456789","Doctor","https://resume-example.com/"); 
-		JobSeeker hossam = new JobSeeker("Hossam","hossam@gmail.com","0123456789","Mechanical Engineer","https://resume-example.com/"); 
-		JobSeeker hassanin = new JobSeeker("Hassanin","hassanin@gmail.com","0123456789","Marketing analyst","https://www.resumonk.com/resume-templates"); 
-		JobSeeker hamdy = new JobSeeker("Hamdy","hamdy@gmail.com","0123456789","Teacher","https://resume-example.com/"); 
-
 		
 		JobSeekers.add(tarek);
 		JobSeekers.add(anas);
-		JobSeekers.add(hossam);
-		JobSeekers.add(hassanin);
-		JobSeekers.add(hamdy);
+	
 
 		
 		
@@ -155,8 +140,7 @@ public class MainClass {
 			}
 		
 		
-		
-		// if the user enters yes or no as answer , we specify his exact reason to enter whether to add a job / search for a job / add a company
+		// specifying the user job		
 		
 		if(answer.toLowerCase().equals("yes")) {
 				System.out.println("Please State whether you are a Job Poster or a Company Admin");
@@ -204,16 +188,16 @@ public class MainClass {
 				System.out.println("Please Enter your Password :  ");
 				String password = input.nextLine();
 				if(isjobseeker == true) {
-				while(account_authinticator_JobSeeker(email,password, JobSeekers) == false) {
-					System.out.println("Please Enter your email :  ");
-					email = input.nextLine();
+					while(account_authinticator_JobSeeker(email,password, JobSeekers) == false) {
+						System.out.println("Please Enter your email :  ");
+						email = input.nextLine();
+						System.out.println();
+						System.out.println("Please Enter your Password :  ");
+						password = input.nextLine();
+					}
 					System.out.println();
-					System.out.println("Please Enter your Password :  ");
-					password = input.nextLine();
-				}
-				System.out.println();
-					
-				}
+						
+					}
 				
 				// if the user is job poster and his functions
 				else if(isjobposter == true) {
@@ -255,11 +239,22 @@ public class MainClass {
 				System.out.println("Please Enter your name :  ");
 				new_name = input.nextLine();
 				Thread.sleep(1000);
+				System.out.println("Please Enter your age :  ");
+				newAge = input.nextInt();
+				Thread.sleep(1000);
 				System.out.println("Please Enter your email :  ");
 				new_email = input.nextLine();
+				new_email = input.nextLine();
+				System.out.println();
 				Thread.sleep(1000);
-				System.out.println("Please Enter your JobTitle :  ");
+				if(iscompanyadmin == true) {
+					new_user_title = "Admin";
+
+				}
+				else {
+				System.out.println("Please Enter your JobTitle :");
 				new_user_title = input.nextLine();
+				}
 				Thread.sleep(1000);
 				System.out.println("Please Enter the name of the organization you work for  :  ");
 				System.out.println();
@@ -269,7 +264,10 @@ public class MainClass {
 				new_company_name = input.nextLine();
 				Thread.sleep(1000);
 				
-				
+				while(iscompanyadmin == true &&  new_user_title.toLowerCase().equals("admin") && new_company_name.toLowerCase().equals("employee")) {
+					System.out.println("You cannot enter the word employee as you mentioned you are an admin so please enter the company name ");
+					new_company_name = input.nextLine();
+					}
 				System.out.println("Please Enter a password for your account");
 				System.out.println("WARNING : Make sure your password contains at least 8 characters");
 				System.out.println("Enter your password here: ");
@@ -281,9 +279,129 @@ public class MainClass {
 				Thread.sleep(1500);
 				System.out.println("Registered Successfully !!");
 				System.out.println();
+				System.out.println();
+				showAccountDetails(new_name , newAge , new_password , new_email , new_user_title);
+				
+				
 			}
 			Thread.sleep(2000);
-		
+			
+			if(new_user_title.toLowerCase().equals("admin") && !new_company_name.toLowerCase().equals("employee")) {
+				NewCompany = new  Company(new_company_name);
+//				all_companies.add(NewCompany);
+				NewAdmin = new CompanyAdmin(new_name, new_email , new_password , new_user_title , NewCompany);
+				System.out.println("When was your company published ? ");
+				int publish = input.nextInt();
+				while(publish < 0 || publish > 2022) {
+					System.out.println("Enter a valid date please");
+					publish = input.nextInt();
+				}
+				System.out.println();
+				System.out.println("How many employees work at your company ? ");
+				int newEmployees = input.nextInt();
+				while(newEmployees < 0) {
+					System.out.println("Enter a valid number ");
+					newEmployees = input.nextInt();
+				}
+				System.out.println();
+				System.out.println("How many free vacancies there at your company ? ");
+				int newVacancies = input.nextInt();
+				while(newVacancies < 0) {
+					System.out.println("Enter a valid number ");
+					newVacancies = input.nextInt();
+				}
+				System.out.println();
+				System.out.println("How many Job Posters do you have ? ");
+				int newJobPosters = input.nextInt();
+				while(newJobPosters < 0) {
+					System.out.println("Enter a valid number ");
+					newJobPosters = input.nextInt();
+				}
+				for(int i = 0 ; i < newJobPosters ; i++) {
+					JobPoster newposter = NewAdmin.addJobPoster();
+					NewAdmin.getCompanyName().getJobPosters().add(newposter);
+					
+				}
+				NewCompany = new Company(new_company_name , publish , newVacancies ,  newEmployees , null , null , NewAdmin.getCompanyName().getJobPosters());
+				all_companies.add(NewCompany);
+				Thread.sleep(2000);
+//				NewAdmin.ListingJobPosters(NewAdmin.getCompanyName());
+				Thread.sleep(1500);
+				System.out.println("Do you want to add any job posters ? ");
+				String addjob = input.nextLine();
+				while(!errorcheck(addjob)) {
+					addjob = input.nextLine();
+				}
+				if(addjob.toLowerCase().equals("yes")) {
+					NewAdmin.addJobPoster();
+				}
+				System.out.println("Do you want to remove any job posters ? ");
+				String removejob = input.nextLine();
+				while(errorcheck(addjob) == false) {
+					removejob = input.nextLine();
+				}
+				if(removejob.toLowerCase().equals("yes")) {
+					System.out.println();
+					System.out.println("Enter the name of the job poster that you want to remove");
+					String removed = input.nextLine();
+					NewAdmin.removeposter(NewCompany, removed);
+				}
+				
+				System.out.println("Do you want to edit any of the companies information ? ");
+				String editdetails = input.nextLine();
+				while(errorcheck(editdetails) == false) {
+					editdetails = input.nextLine();
+				}
+				if(editdetails.toLowerCase().equals("yes")) {
+					
+					NewAdmin.EditDetails(NewCompany);
+				}
+				System.out.println(all_companies.size());
+				
+			}
+			
+			
+			if (iscompanyadmin == true && having_an_account.toLowerCase().equals("yes") ){
+				System.out.println("");
+				Thread.sleep(1500);
+				System.out.println("Do you want to add any job posters ? ");
+				String addjob = input.nextLine();
+				while(!errorcheck(addjob)) {
+					addjob = input.nextLine();
+				}
+				if(addjob.toLowerCase().equals("yes")) {
+					System.out.println();
+					omar.addJobPoster();
+				}
+				System.out.println("Do you want to remove any job posters ? ");
+				String removejob = input.nextLine();
+				while(errorcheck(removejob) == false) {
+					removejob = input.nextLine();
+				}
+				if(removejob.toLowerCase().equals("yes")) {
+					System.out.println();
+					System.out.println("Enter the name of the job poster that you want to remove");
+					String removed = input.nextLine();
+					omar.removeposter( first_company , removed);
+				}
+				System.out.println("Do you want to edit any of the companies information ? ");
+				String editdetails = input.nextLine();
+				while(errorcheck(editdetails) == false) {
+					editdetails = input.nextLine();
+				}
+				if(editdetails.toLowerCase().equals("yes")) {
+					
+					omar.EditDetails(first_company);
+				}
+				
+				
+				
+				System.out.println(all_companies.size());
+			}
+				
+				
+			
+			
 				if(new_company_name != null) {
 				if(new_company_name.toLowerCase().equals("employee")) {
 					System.out.println("Please upload your cv " );
@@ -307,27 +425,31 @@ public class MainClass {
 					
 					JobSeeker new_job_seeker = new JobSeeker(new_name,new_email, new_password, new_user_title, cv_input.toString());
 					JobSeekers.add(new_job_seeker);
-					System.out.println();
-					System.out.println("Your Account details is : ");
-					System.out.println();
-					System.out.println("Name : " + new_name);
-					System.out.println();
-					System.out.println("Email : " + new_email );
-					System.out.println();
-					System.out.println("Password : " + new_password);
-					System.out.println();
-					System.out.println("Job Title : " + new_user_title);
+//					System.out.println();
+//					System.out.println("Your Account details is : ");
+//					System.out.println();
+//					System.out.println("Name : " + new_name);
+//					System.out.println();
+//					System.out.println("Email : " + new_email );
+//					System.out.println();
+//					System.out.println("Password : " + new_password);
+//					System.out.println();
+//					System.out.println("Job Title : " + new_user_title);
 					System.out.println();
 					System.out.println("Your CV link : " + cv_input.toString());
-					System.out.println();
+//					System.out.println();
 
 			}}
 			
 			
+				
+				
 			
-			// if user is job seeker   code below from line 305 to 
+			// if user is job seeker   code below from line 305 to 622
 			
 			if(isjobseeker == true) {		
+				System.out.println();
+				System.out.println();
 				System.out.println("Do you want to Apply and view Jobs ? ");
 				System.out.println();
 				System.out.println("Enter \"Yes\" or \"No\" ");
@@ -340,11 +462,9 @@ public class MainClass {
 					System.out.println();
 					Thread.sleep(2000);
 					int a = 1, d = 0 , x = 0 ; // to control showing the application 309-327
-					char c = 65;
 					System.out.println("Available Jobs : ");
 					Thread.sleep(2000);
 					a = 1;
-					c= 65 ;
 					for(int i = 0 ; i < (all_companies.size()) ; i++){
 						System.out.println();
 						d = 0;
@@ -363,7 +483,6 @@ public class MainClass {
 								Thread.sleep(1000);
 								d++;
 						}
-						c++;
 					}
 					System.out.println("How many jobs do you want to apply for ?   Enter 0 if you don't wont to apply ");
 					System.out.println();
@@ -564,7 +683,7 @@ public class MainClass {
 						for(int i = 0 ; i < all_companies.size(); i++) {
 							System.out.println(a + " ) " + "Company Name : " + all_companies.get(i).getName() );
 							System.out.println();
-							System.out.println("Company Published by : " + all_companies.get(i).getPublishDate());
+							System.out.println("Company Published in : " + all_companies.get(i).getPublishDate());
 							System.out.println();
 							System.out.println("Number of Employees in the Company is : " + all_companies.get(i).getNo_of_employees());
 							System.out.println();
@@ -618,6 +737,15 @@ public class MainClass {
 			
 			
 					}}
+			
+			
+			// if user is 
+			
+			
+		
+			
+			
+			
 			System.out.println();
 			System.out.println("Thank you for using the application and hope to see you soon ");
 			
@@ -752,6 +880,20 @@ public static boolean account_authinticator_JobPoster(String email , String Pass
 	}
 }
 
+public static void showAccountDetails(String name , int age , String Password , String email , String JobTitle) {
+	System.out.println("Your Account details is : ");
+	System.out.println();
+	System.out.println("Name : " + name);
+	System.out.println();
+	System.out.println("Age : " + age);
+	System.out.println();
+	System.out.println("Email : " + email );
+	System.out.println();
+	System.out.println("Password : " + Password);
+	System.out.println();
+	System.out.println("Job Title : " + JobTitle);
+	System.out.println();
+}
 public static boolean account_authinticator_Admin(String email , String Password, ArrayList<CompanyAdmin> list) throws InterruptedException {
 	
 	int found = 0 , not_found = 0 , correct = 0, wrong = 0, index = 0;
